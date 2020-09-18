@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">fantastic-engine</string>
+    <string name="post_create_header_title">Матвей</string>
+    <string name="post_visibility_public">Видно всем</string>
+    <string name="time_now">Сейчас</string>
+    <string name="mood">Настроение</string>
+    <string name="topic">Теметика</string>
 </resources>

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#4986CC</color>
+    <color name="colorSecondary">#3F8AE0</color>
+
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#4986CC</color>
+
+    <color name="waveFormProgressColor">#3F8AE0</color>
+    <color name="waveFormBackgroundColor">#FCFCFC</color>
+
+    <color name="colorLayoutBackground">#F2F3F5</color>
+    <color name="colorPlaceholder">#818C99</color>
+    <color name="colorPrimaryBg">#FFFFFF</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorSecondaryText">#000000</color>
+    <color name="colorIconButtonBg">#F2F3F5</color>
+    <color name="colorLightInputBg">#E8EDF0</color>
+
+    <color name="colorAlmostBlackText">#2C2D2E</color>
+    <color name="colorBlackText">#000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="grayTextColor">#6D7885</color>
+    <color name="cardBackgroundColor">#F5F5F5</color>
 </resources>
