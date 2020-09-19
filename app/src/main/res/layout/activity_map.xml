@@ -17,18 +17,16 @@
             android:layout_height="match_parent"
             />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_close_white"
-                android:onClick="onBackButtonClicked"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_gravity="right"
-
-                app:backgroundTint="#77000000"
-        />
+        <com.melnykov.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onBackButtonClicked"
+            android:background="@color/grayTextColor"
+            android:src="@drawable/ic_close_white"
+            app:fab_colorNormal="@color/grayTextColor"
+            android:layout_gravity="left"
+            android:layout_margin="16dp"
+            />
 
         <LinearLayout
             android:id="@+id/emotionSpinnerLayout"
