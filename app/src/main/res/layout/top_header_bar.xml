@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            >
+            <LinearLayout
+                android:background="@drawable/gray_round_border"
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Для Вас"
+                    android:textAlignment="center"
+
+                    android:textColor="@color/grayTextColor"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center"
+
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Музыка"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Фильмы"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Осень"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="IT"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="12dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Путешествия"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
