@@ -74,6 +74,7 @@ class MapActivity : AppCompatActivity() {
             map.setStyle(Style.LIGHT) { style -> // Disable any type of fading transition when icons collide on the map. This enhances the visual
                 // look of the data clustering together and breaking apart.
                 style.transition = TransitionOptions(0, 0, false)
+
                 mapboxMap!!.animateCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         LatLng(59.9311, 30.3609), 15.0
@@ -82,7 +83,7 @@ class MapActivity : AppCompatActivity() {
                 addClusteredGeoJsonSource(style)
                 style.addImage(
                     "cross-icon-id",
-                    BitmapUtils.getBitmapFromDrawable(resources.getDrawable(R.drawable.avatar))!!,
+                    BitmapUtils.getBitmapFromDrawable(resources.getDrawable(R.drawable.ic_close_blue))!!,
                     true
                 )
             }
@@ -132,7 +133,7 @@ class MapActivity : AppCompatActivity() {
                     FeatureCollection.fromFeatures(symbolLayerIconFeatureList),
                     GeoJsonOptions()
                         .withCluster(true)
-                        .withClusterMaxZoom(14)
+                        .withClusterMaxZoom(25)
                         .withClusterRadius(50)
                         .withClusterProperty(
                             "winter", Expression("+"), Expression("case",
