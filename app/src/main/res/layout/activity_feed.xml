@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   tools:context=".FeedActivity"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@android:color/transparent">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+
+            android:layout_width="match_parent"
+            android:elevation="0dp"
+            app:elevation="0dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+
+            app:layout_constraintTop_toTopOf="parent"
+    >
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="@color/cardBackgroundColor"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+
+                app:navigationIcon="@drawable/ic_camera_outline"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
+                android:theme="@style/ToolbarColoredBackArrow"
+        >
+            <!--<com.google.android.material.tabs.TabLayout android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                <ViewPager2
+            </com.google.android.material.tabs.TabLayout>-->"
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp">
+
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                >
+                    <LinearLayout
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:text="Новости"
+                        />
+                        <ImageView
+                                android:layout_marginTop="2dp"
+                                android:layout_width="13dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/ic_dropdown_blue"
+                                android:layout_gravity="center"
+                        />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                >
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:text="Интересное"
+                        />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                >
+                    <ImageView
+                            android:id="@+id/toolbarPostFundImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_notification_outline"
+                    />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--        android:onClick="onPostCreateButtonClick"-->
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingLeft="16dp"
+                android:paddingEnd="16dp"
+                android:paddingRight="16dp">
+
+            <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider_bg"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grayTextColor"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#ECEDF1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:background="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                    >
+                        <LinearLayout
+                                android:background="@drawable/gray_round_border"
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:gravity="center"
+
+                                android:orientation="horizontal"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Для Вас"
+                                    android:textAlignment="center"
+
+                                    android:textColor="@color/grayTextColor"
+                                    android:fontFamily="@font/roboto"
+                                    android:textFontWeight="500"
+                            />
+                        </LinearLayout>
+                        <LinearLayout
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:gravity="center"
+
+                                android:orientation="horizontal"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Музыка"
+                            />
+                        </LinearLayout>
+                        <LinearLayout
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Фильмы"
+                            />
+                        </LinearLayout>
+                        <LinearLayout
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Осень"
+                            />
+                        </LinearLayout>
+                        <LinearLayout
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="IT"
+                            />
+                        </LinearLayout>
+                        <LinearLayout
+                                android:layout_marginStart="12dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Путешествия"
+                            />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                            android:id="@+id/new_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:scrollbarDefaultDelayBeforeFade="0"
+                            android:scrollbarFadeDuration="0"
+                            android:scrollbarSize="0dp"
+                            app:cardBackgroundColor="#FFFFFF"
+                            app:cardCornerRadius="0dp"
+                            app:cardElevation="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                    >
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="10dp">
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="12dp"
+                                    android:paddingTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                <androidx.cardview.widget.CardView
+                                        android:layout_width="28dp"
+                                        android:layout_height="28dp"
+                                        android:layout_gravity="center"
+                                        app:cardCornerRadius="22dp"
+                                        app:cardElevation="0dp">
+
+                                    <ImageView
+                                            android:id="@+id/imageView"
+                                            android:src="@drawable/avatar"
+                                            android:layout_gravity="center"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                    />
+
+                                </androidx.cardview.widget.CardView>
+
+                                <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:scrollbarDefaultDelayBeforeFade="0"
+                                        android:scrollbarFadeDuration="0"
+                                        android:scrollbarSize="0dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:paddingStart="8dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="36dp">
+
+                                        <TextView
+                                                android:id="@+id/authorName"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/roboto"
+                                                android:fontWeight="500"
+                                                android:letterSpacing="-0.08"
+                                                android:text="Матвей Правосудов"
+                                                android:textColor="@color/colorAlmostBlackText"
+                                                android:textFontWeight="400"
+                                                android:textSize="13dp"
+                                                app:layout_constraintLeft_toLeftOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:lineHeight="20dp"/>
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/image2"
+                                    android:scaleType="fitXY"
+                            />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginLeft="12dp"
+                                    android:textFontWeight="400"
+                                    android:fontFamily="@font/roboto"
+
+                                    android:text="15 комментариев"
+                            />
+
+                            <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:layout_marginTop="14dp"
+                                    app:cardElevation="0dp"
+                                    app:cardMaxElevation="0dp">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                    <ImageButton
+                                            android:id="@+id/imageButton2"
+                                            android:layout_width="20dp"
+                                            android:layout_height="16.75dp"
+                                            android:layout_marginStart="14dp"
+                                            android:layout_weight="1"
+                                            android:background="@android:color/transparent"
+                                            android:scaleType="centerInside"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/ic_heart"/>
+
+                                    <ImageButton
+                                            android:id="@+id/imageButton4"
+                                            android:layout_width="20dp"
+                                            android:layout_height="16.56dp"
+                                            android:layout_marginStart="26dp"
+                                            android:layout_weight="1"
+                                            android:background="@android:color/transparent"
+                                            android:scaleType="centerInside"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/ic_forward"/>
+
+                                    <ImageButton
+                                            android:id="@+id/imageButton"
+                                            android:layout_width="16dp"
+                                            android:layout_height="19dp"
+                                            android:layout_marginEnd="13dp"
+                                            android:layout_marginRight="13dp"
+                                            android:layout_weight="1"
+                                            android:background="@android:color/transparent"
+                                            android:scaleType="centerInside"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:srcCompat="@drawable/ic_dots_horizontal"/>
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/goToMapsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_globe_outline"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+
+
+    <LinearLayout
+            android:id="@id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/navBarBackgroundColor"
+    >
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+        >
+            <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_news_outline"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/blueTextColor"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="10dp"
+                    android:textFontWeight="500"
+                    android:text="Новости"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+        >
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_services_outline"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#99A2AD"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
+                    android:textSize="10dp"
+                    android:text="Сервисы"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+        >
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_message_outline"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#99A2AD"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
+                    android:textSize="10dp"
+                    android:text="Сообщения"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+        >
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clips_outline"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#99A2AD"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
+                    android:textSize="10dp"
+                    android:text="Клипы"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+        >
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_user_circle_outline"
+                    android:layout_gravity="center"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#99A2AD"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
+                    android:textSize="10dp"
+                    android:text="Профиль"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
