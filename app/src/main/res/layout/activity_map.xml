@@ -17,6 +17,19 @@
             android:layout_height="match_parent"
             />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_white"
+                android:onClick="onBackButtonClicked"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_gravity="right"
+
+                app:backgroundTint="#77000000"
+        />
+
         <LinearLayout
             android:id="@+id/emotionSpinnerLayout"
             android:orientation="horizontal"

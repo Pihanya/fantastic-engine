@@ -33,6 +33,10 @@ class MapActivity : AppCompatActivity() {
     private lateinit var mapboxMap: MapboxMap
     private lateinit var markViewManager: MarkerViewManager
 
+    fun onBackButtonClicked(view: View) {
+        finish()
+    }
+
     fun onFilterButtonClick(view: View) {
         /*when (view.id) {
             R.id.buttonFloatTop -> {
