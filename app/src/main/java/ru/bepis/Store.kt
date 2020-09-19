@@ -6,7 +6,8 @@ import ru.bepis.model.PostOnMap
 import ru.bepis.model.SubjectType
 
 object Store {
-    var mood = ""
+    var mood: MoodType? = null
+    var subjectType: SubjectType? = null
 
     /*val posts = DEFAULT_GENERATED_POSTS.let {
         var ctr = it
@@ -19,16 +20,22 @@ object Store {
 
     val posts = listOf(
         PostOnMap(
-            coordinate = 59.9564037 to 30.3077903,
+            coordinate = 59.9549548 to 30.3067678, 3,
             post = Post("IT", MoodType.HIGH_ENERGY, SubjectType.IT)
         ),
         PostOnMap(
-            coordinate = 59.9564037 to 30.3077903,
-            post = Post("Еда", MoodType.POSITIVE, SubjectType.ART)
+            coordinate = 59.9552436 to 30.3056198, 2,
+            post = Post("Натюрморты", MoodType.POSITIVE, SubjectType.ART)
         ),
         PostOnMap(
-            coordinate = 59.9535502 to 30.3049822,
-            post = Post("Алкоголь", MoodType.NEGATIVE, SubjectType.PHOTO)
-        )
+            coordinate = 59.954220 to 30.306442, 1,
+            post = Post("Музыка", MoodType.LOW_ENERGY, SubjectType.MUSIC)
+        ),
+        PostOnMap(
+            coordinate = 59.954375 to 30.305620, 0,
+            post = Post("Съемки", MoodType.LOW_ENERGY, SubjectType.PHOTO)
+        ),
+
+
     )
 }

@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -24,6 +23,7 @@ import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import kotlinx.android.synthetic.main.activity_map.*
 import ru.bepis.model.MoodType
 import ru.bepis.model.PostOnMap
+import ru.bepis.model.SubjectType
 import ru.bepis.utils.Config.DEFAULT_MAP_CENTER
 import ru.bepis.utils.Config.DEFAULT_ZOOM_LEVEL
 
@@ -34,7 +34,7 @@ class MapActivity : AppCompatActivity() {
     private lateinit var markViewManager: MarkerViewManager
 
     fun onFilterButtonClick(view: View) {
-        when (view.id) {
+        /*when (view.id) {
             R.id.buttonFloatTop -> {
                 toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
             }
@@ -43,15 +43,39 @@ class MapActivity : AppCompatActivity() {
             R.id.buttonFloatLeft -> toggleLayer("cluster-" + MoodType.NEGATIVE)
             else -> {
             }
+        }*/
+        val moodType = when (view.id) {
+            R.id.buttonFloatTop -> MoodType.HIGH_ENERGY
+            R.id.buttonFloatRight -> MoodType.POSITIVE
+            R.id.buttonFloatBottom ->  MoodType.LOW_ENERGY
+            R.id.buttonFloatLeft ->  MoodType.NEGATIVE
+            else -> throw IllegalStateException()
         }
+        filterOn(moodType)
+
         showDropDownLoayerAndHideButtons(view.id)
     }
 
+    private val viewByMoodType = mutableMapOf<MoodType, MutableList<View>>()
+
+    fun filterOn(moodType: MoodType? = null) {
+        viewByMoodType.values.forEach { view -> view.forEach { it.visibility = View.VISIBLE } }
+        if(moodType == null) {
+            return
+        }
+
+        viewByMoodType.entries
+            .filter { (mood, _) -> mood != moodType }
+            .forEach { (_, view) -> view.forEach { it.visibility = View.GONE } }
+    }
 
     fun onViewMoodClicked(view: View) {
         val ll = view as LinearLayout
         val themeView = ll.getChildAt(1) as TextView
-        Store.mood = themeView.text.toString()
+
+        Store.subjectType = SubjectType.fromTitle(themeView.text.toString())
+        Store.mood = MoodType.fromSubjectType(Store.subjectType!!)
+
         val intent = Intent(this, MoodFeeds::class.java)
         startActivity(intent)
     }
@@ -94,6 +118,15 @@ class MapActivity : AppCompatActivity() {
             }
         }
 
+        val moodType = when (emotionSpinner.selectedItemId) {
+            0L -> MoodType.HIGH_ENERGY
+            1L -> MoodType.POSITIVE
+            2L -> MoodType.LOW_ENERGY
+            3L -> MoodType.NEGATIVE
+            else -> throw IllegalStateException()
+        }
+        filterOn(moodType)
+
         emotionSpinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
@@ -101,14 +134,14 @@ class MapActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                when (id) {
-                    0L -> toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
-                    1L -> toggleLayer("cluster-" + MoodType.POSITIVE)
-                    2L -> toggleLayer("cluster-" + MoodType.LOW_ENERGY)
-                    3L -> toggleLayer("cluster-" + MoodType.NEGATIVE)
-                    else -> {
-                    }
+                val moodType = when (id) {
+                    0L -> MoodType.HIGH_ENERGY
+                    1L -> MoodType.POSITIVE
+                    2L -> MoodType.LOW_ENERGY
+                    3L -> MoodType.NEGATIVE
+                    else -> throw IllegalStateException()
                 }
+                filterOn(moodType)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -144,7 +177,7 @@ class MapActivity : AppCompatActivity() {
 
                 val markerViewManager = MarkerViewManager(mapView, mapboxMap)
 
-                Store.posts.forEach { post -> markerViewManager.addMarker(createMarker(post, 2)) }
+                Store.posts.forEach { post -> markerViewManager.addMarker(createMarker(post, post.size)) }
                 /*EMOJIS_IMAGES.entries.forEach { (icon, iconId) ->
                     style.addImage(
                         icon,
@@ -166,22 +199,25 @@ class MapActivity : AppCompatActivity() {
         }
 
         val view = LayoutInflater.from(this).inflate(layout, mapView, false)
+
+        if(post.post.mood in viewByMoodType) viewByMoodType[post.post.mood]?.also { it.add(view) }
+        else viewByMoodType[post.post.mood] = mutableListOf(view)
+
         val title = view.findViewById(R.id.title) as TextView?
         val emoji = view.findViewById(R.id.emoji) as TextView
 
         if (title != null) title.text = post.post.title
-        emoji.setText(post.post.emoji())
+        emoji.text = post.post.emoji()
 
         view.setOnClickListener { openTopic(post) }
         return MarkerView(LatLng(post.coordinate.first, post.coordinate.second), view)
     }
 
     private fun openTopic(topic: PostOnMap) {
-        val args = Bundle()
-        args.putString("title", topic.post.title)
-
-        Intent(this)
-        /*Nav.go(getActivity(), TopicPostsFragment::class.java, args)*/
+        val intent = Intent(this, MoodFeeds::class.java)
+        Store.subjectType = topic.post.subjectType
+        Store.mood = topic.post.mood
+        startActivity(intent)
     }
 
     /*private fun addClusteredGeoJsonSource(loadedMapStyle: Style) {

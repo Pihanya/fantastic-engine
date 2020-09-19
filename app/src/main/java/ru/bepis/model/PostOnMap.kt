@@ -3,6 +3,7 @@ package ru.bepis.model
 data class PostOnMap(
     // lat/lon
     val coordinate: Pair<Double, Double>,
+    val size: Int,
     val post: Post
 )
 
@@ -23,6 +24,7 @@ data class Post(
             SubjectType.PHOTO -> "\uD83D\uDCF7"
             SubjectType.ART -> "\uD83D\uDDBC️"
             SubjectType.AUTUMN -> "\uD83C\uDF42"
+            SubjectType.MUSIC -> "\uD83C\uDFA7"
         }
     }
 

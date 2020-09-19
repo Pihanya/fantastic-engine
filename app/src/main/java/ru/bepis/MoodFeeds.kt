@@ -1,10 +1,10 @@
 package ru.bepis
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.mood_activity.*
+import ru.bepis.model.MoodType
 
 class MoodFeeds : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,14 +15,13 @@ class MoodFeeds : AppCompatActivity() {
             finish()
         })
 
-        toolbar.title = Store.mood
-
+        toolbar.title = Store.subjectType!!.title
         when(Store.mood) {
-            "it" -> {
+            MoodType.HIGH_ENERGY, MoodType.POSITIVE -> {
                 textView1.text = "${textView1.text} * хорошнее настроение"
                 textView2.text = "${textView2.text} * хорошнее настроение"
             }
-            "winter" -> {
+            MoodType.LOW_ENERGY, MoodType.NEGATIVE -> {
                 textView1.text = "${textView1.text} * грустное настроение"
                 textView2.text = "${textView2.text} * грустное настроение"
             }
