@@ -1,8 +1,10 @@
 package ru.bepis
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.gson.JsonObject
@@ -55,26 +57,82 @@ class MapActivity : AppCompatActivity() {
 
     fun onFilterButtonClick(view: View) {
         when (view.id) {
-            R.id.buttonFloatTop -> toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
+            R.id.buttonFloatTop -> {
+                toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
+            }
             R.id.buttonFloatRight -> toggleLayer("cluster-" + MoodType.POSITIVE)
             R.id.buttonFloatBottom -> toggleLayer("cluster-" + MoodType.LOW_ENERGY)
             R.id.buttonFloatLeft -> toggleLayer("cluster-" + MoodType.NEGATIVE)
             else -> {
             }
         }
+        showDropDownLoayerAndHideButtons(view.id)
     }
 
-    private fun toggleLayer(layerId: String) {
+
+    fun onViewMoodClicked(view: View) {
+        val intent = Intent(this, MoodFeeds::class.java)
+        startActivity(intent)
+    }
+
+    private fun toggleLayer(selectedLayerId: String) {
         mapboxMap.getStyle { style ->
-            val layer: Layer? = style.getLayer(layerId)
-            if (layer != null) {
-                if (VISIBLE == layer.visibility.getValue()) {
-                    layer.setProperties(visibility(NONE))
-                } else {
-                    layer.setProperties(visibility(VISIBLE))
+            val clusters = arrayListOf<String>("cluster-" + MoodType.HIGH_ENERGY,
+                                                                "cluster-" + MoodType.POSITIVE,
+                                                                "cluster-" + MoodType.LOW_ENERGY,
+                                                                "cluster-" + MoodType.NEGATIVE)
+            for (layerId in clusters) {
+                val layer: Layer? = style.getLayer(layerId)
+                if (layer != null) {
+                    if (layerId == selectedLayerId) {
+                        layer.setProperties(visibility(VISIBLE))
+                    } else {
+                        layer.setProperties(visibility(NONE))
+                    }
                 }
             }
         }
+    }
+
+    private fun showDropDownLoayerAndHideButtons(selectedMood: Int) {
+        emotionSpinnerLayout.visibility = View.VISIBLE
+
+        buttonFloatBottomLayout.visibility = View.GONE
+        buttonFloatTopLayout.visibility = View.GONE
+        buttonFloatLeftLayout.visibility = View.GONE
+        buttonFloatRightLayout.visibility = View.GONE
+
+        when (selectedMood) {
+            R.id.buttonFloatTop -> emotionSpinner.setSelection(0)
+            R.id.buttonFloatRight -> emotionSpinner.setSelection(1)
+            R.id.buttonFloatBottom -> emotionSpinner.setSelection(2)
+            R.id.buttonFloatLeft -> emotionSpinner.setSelection(3)
+            else -> {
+            }
+        }
+
+        emotionSpinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (id) {
+                    0L -> toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
+                    1L -> toggleLayer("cluster-" + MoodType.POSITIVE)
+                    2L -> toggleLayer("cluster-" + MoodType.LOW_ENERGY)
+                    3L -> toggleLayer("cluster-" + MoodType.NEGATIVE)
+                    else -> {
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                // your code here
+            }
+        })
+
     }
 
     private lateinit var mapboxMap: MapboxMap

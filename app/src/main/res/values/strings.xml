@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">fantastic-engine</string>
     <string name="post_create_header_title">Матвей</string>
+    <string name="snippet_author">Матвей Правосудов</string>
+    <string name="new_date">час назад</string>
+    <string name="new_text">Такие дела, брат.</string>
+    <string-array name="emotions">
+        <item>😜 Энергичное настроение</item>
+        <item>😃 Хорошее настроение</item>
+        <item>😴 Сонное настроение</item>
+        <item>🙁 Грустное настроение</item>
+    </string-array>
     <string name="post_visibility_public">Видно всем</string>
     <string name="time_now">Сейчас</string>
     <string name="mood">Настроение</string>

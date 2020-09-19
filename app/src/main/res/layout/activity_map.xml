@@ -17,7 +17,31 @@
             android:layout_height="match_parent"
             />
 
+        <LinearLayout
+            android:id="@+id/emotionSpinnerLayout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            >
+            <Spinner
+                android:id="@+id/emotionSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:background="@drawable/round_dropdown"
+                android:paddingRight="25dp"
+                android:layout_gravity="top"
+                android:dropDownWidth="wrap_content"
+
+                android:entries="@array/emotions" />
+
+        </LinearLayout>
+
         <FrameLayout
+            android:id="@+id/buttonFloatTopLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
@@ -41,6 +65,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/buttonFloatRightLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|right"
@@ -64,6 +89,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/buttonFloatLeftLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|left"
@@ -87,6 +113,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/buttonFloatBottomLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
@@ -104,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="😃"
+                android:text="😴"
                 android:elevation="16dp"
                 android:textColor="@android:color/white"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -140,6 +167,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:onClick="onViewMoodClicked"
                         android:orientation="vertical">
                         <FrameLayout
                             android:layout_width="80dp"

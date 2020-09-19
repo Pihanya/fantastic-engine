@@ -26,5 +26,9 @@
 
         <activity android:name=".MapActivity" android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity android:name=".MoodFeeds" android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 </manifest>
