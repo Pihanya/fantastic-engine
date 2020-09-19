@@ -1,74 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
+    tools:context=".MapActivity"
+    android:orientation="vertical">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/buttonFloatTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_margin="16dp"
-        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
-        />
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/buttonFloatRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center"
-        android:layout_margin="16dp"
-        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
-        />
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/buttonFloatLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center"
-        android:layout_margin="16dp"
-        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:orientation="vertical">
-        <com.melnykov.fab.FloatingActionButton
-            android:id="@+id/buttonFloatBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onFilterButtonClick"
-            android:layout_gravity="center"
-            android:layout_margin="16dp"
-            android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             />
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            >
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/buttonFloatTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFilterButtonClick"
+                android:background="@color/white"
+                app:fab_colorNormal="@color/white"
+                android:layout_margin="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="😜"
+                android:elevation="16dp"
+                android:textColor="@android:color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            >
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/buttonFloatRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFilterButtonClick"
+                android:background="@color/white"
+                app:fab_colorNormal="@color/white"
+                android:layout_margin="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="😃"
+                android:elevation="16dp"
+                android:textColor="@android:color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            >
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/buttonFloatLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFilterButtonClick"
+                android:background="@color/white"
+                app:fab_colorNormal="@color/white"
+                android:layout_margin="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="🙁"
+                android:elevation="16dp"
+                android:textColor="@android:color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            >
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/buttonFloatBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFilterButtonClick"
+                android:background="@color/white"
+                app:fab_colorNormal="@color/white"
+                android:layout_margin="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="😃"
+                android:elevation="16dp"
+                android:textColor="@android:color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </FrameLayout>
+    </FrameLayout>
         <LinearLayout
             android:id="@+id/footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_alignParentBottom="true"
             android:orientation="vertical" >
 
-            <Button
+            <EditText
+                android:background="@drawable/gray_round_border"
+                android:layout_margin="12dp"
+                android:padding="8dp"
+                android:paddingLeft="12dp"
+                android:drawableLeft="@drawable/ic_search"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:id="@+id/btn_date"
-                android:text="Tarih" />
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                />
 
-            <Button
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:id="@+id/btn_converter"
-                android:layout_height="35dp"
-                android:text="Hesap" />
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <FrameLayout
+                            android:layout_width="80dp"
+                            android:padding="5dp"
+                            android:layout_height="72dp">
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:background="@drawable/round_border"
+                                android:textAlignment="center"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="🎧"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="5dp"
+                                android:text="😃"
+                                android:textColor="#000000"
+                                android:layout_gravity="left|top"
+                                />
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:text="Музыка"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

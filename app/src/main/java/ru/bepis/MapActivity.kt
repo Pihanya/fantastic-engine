@@ -145,7 +145,6 @@ class MapActivity : AppCompatActivity() {
                 )
             )
         } catch (uriSyntaxException: URISyntaxException) {
-
             Log.d("ERROR", "OLOLOLOLO ${uriSyntaxException.message}")
 //            Timber.e("Check the URL %s", uriSyntaxException.message)
         }
