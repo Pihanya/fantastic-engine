@@ -85,7 +85,6 @@
       <EditText
         android:id="@+id/postEditText"
         android:background="#00000000"
-        android:minLines="13"
         android:textCursorDrawable="@drawable/cursor_color"
 
         android:layout_width="match_parent"
