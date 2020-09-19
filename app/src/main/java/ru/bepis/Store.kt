@@ -25,7 +25,7 @@ object Store {
         ),
         PostOnMap(
             coordinate = 59.9552436 to 30.3056198, 2,
-            post = Post("Натюрморты", MoodType.POSITIVE, SubjectType.ART)
+            post = Post("Искусство", MoodType.POSITIVE, SubjectType.ART)
         ),
         PostOnMap(
             coordinate = 59.954220 to 30.306442, 1,
@@ -33,9 +33,7 @@ object Store {
         ),
         PostOnMap(
             coordinate = 59.954375 to 30.305620, 0,
-            post = Post("Съемки", MoodType.LOW_ENERGY, SubjectType.PHOTO)
+            post = Post("Съемки", MoodType.NEGATIVE, SubjectType.PHOTO)
         ),
-
-
     )
 }
