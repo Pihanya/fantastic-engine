@@ -26,6 +26,7 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import com.mapbox.mapboxsdk.utils.BitmapUtils
 import kotlinx.android.synthetic.main.activity_map.*
+import ru.bepis.model.MoodType
 import ru.bepis.model.Post.Companion.toJson
 import ru.bepis.utils.Config.DEFAULT_MAP_CENTER
 import ru.bepis.utils.Config.DEFAULT_ZOOM_LEVEL
@@ -53,10 +54,12 @@ class MapActivity : AppCompatActivity() {
     )
 
     fun onFilterButtonClick(view: View) {
-        when(view.id) {
-            R.id.buttonFloatBottom -> toggleLayer(CLUSTER_ONE)
+        when (view.id) {
+            R.id.buttonFloatTop -> toggleLayer("cluster-" + MoodType.HIGH_ENERGY)
+            R.id.buttonFloatRight -> toggleLayer("cluster-" + MoodType.POSITIVE)
+            R.id.buttonFloatBottom -> toggleLayer("cluster-" + MoodType.LOW_ENERGY)
+            R.id.buttonFloatLeft -> toggleLayer("cluster-" + MoodType.NEGATIVE)
             else -> {
-
             }
         }
     }
@@ -174,16 +177,19 @@ class MapActivity : AppCompatActivity() {
         // Use the earthquakes GeoJSON source to create three layers: One layer for each cluster category.
         // Each point range gets a different fill color.
         val layers = arrayOf(
-            intArrayOf(20, ContextCompat.getColor(this, R.color.mapboxGreen)),
-            intArrayOf(0, ContextCompat.getColor(this, R.color.mapbox_white))
+            arrayOf(MoodType.HIGH_ENERGY, ContextCompat.getColor(this, R.color.mapbox_white)),
+            arrayOf(MoodType.LOW_ENERGY, ContextCompat.getColor(this, R.color.blueTextColor)),
+            arrayOf(MoodType.POSITIVE, ContextCompat.getColor(this, R.color.mapboxGreen)),
+            arrayOf(MoodType.NEGATIVE, ContextCompat.getColor(this, R.color.mapboxRed))
         )
         for (i in layers.indices) {
-            //Add clusters' circles
-            val circles = CircleLayer("cluster-$i", "earthquakes")
+            val moodType = layers[i][0] as MoodType
+
+            val circles = CircleLayer("cluster-$moodType", "earthquakes")
             val pointCount = toNumber(get("point_count"))
 
             circles.setProperties(
-                circleColor(layers[i][1]),
+                circleColor(layers[i][1] as Int),
                 circleRadius(
                     interpolate(
                         exponential(1),
@@ -207,6 +213,7 @@ class MapActivity : AppCompatActivity() {
                     gte(toNumber(get("winter")), 2)
                 )
             )*/
+            circles.setFilter(all(has("mood"), eq(get("mood"), literal(moodType.name))))
             loadedMapStyle.addLayer(circles)
         }
 
