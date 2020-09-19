@@ -16,5 +16,16 @@ class MoodFeeds : AppCompatActivity() {
         })
 
         toolbar.title = Store.mood
+
+        when(Store.mood) {
+            "it" -> {
+                textView1.text = "${textView1.text} * хорошнее настроение"
+                textView2.text = "${textView2.text} * хорошнее настроение"
+            }
+            "winter" -> {
+                textView1.text = "${textView1.text} * грустное настроение"
+                textView2.text = "${textView2.text} * грустное настроение"
+            }
+        }
     }
 }
