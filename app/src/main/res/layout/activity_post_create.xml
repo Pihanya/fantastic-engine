@@ -87,6 +87,7 @@
         android:id="@+id/postEditText"
         android:background="#00000000"
         android:textCursorDrawable="@drawable/cursor_color"
+        android:hint="Что нового?"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -205,6 +206,7 @@
           android:orientation="horizontal"
         >
           <TextView
+                  android:id="@+id/moodText"
             android:layout_width="wrap_content"
             android:layout_height="14dp"
             android:layout_gravity="center"
@@ -222,6 +224,7 @@
         </LinearLayout >
 
         <LinearLayout
+                android:id="@+id/topicLayout"
           android:background="@drawable/gray_dropdown_border"
           android:layout_marginLeft="12dp"
 
@@ -237,6 +240,7 @@
         >
 
           <TextView
+                  android:id="@+id/topicText"
             android:layout_width="wrap_content"
             android:layout_height="14dp"
             android:layout_gravity="center"
