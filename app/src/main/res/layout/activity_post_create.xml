@@ -38,6 +38,7 @@
         android:paddingRight="10dp"
         android:layout_gravity="end"
         android:adjustViewBounds="true"
+          android:onClick="onPostCreateClicked"
         android:src="@drawable/ic_done_blue"
 
         />

@@ -10,6 +10,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
+            android:background="@color/white"
 
             android:layout_width="match_parent"
             android:elevation="0dp"
@@ -105,22 +106,6 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingLeft="16dp"
-                android:paddingEnd="16dp"
-                android:paddingRight="16dp">
-
-            <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider_bg"/>
-        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/top_header_bar"/>
@@ -159,6 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_globe_outline"
+                android:onClick="onMapButtonClicked"
                 android:layout_marginBottom="12dp"
                 android:layout_marginEnd="12dp"
                 android:layout_gravity="right"
