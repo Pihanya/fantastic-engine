@@ -26,4 +26,8 @@
     <color name="colorBlack">#000000</color>
     <color name="grayTextColor">#6D7885</color>
     <color name="cardBackgroundColor">#F5F5F5</color>
+
+    <color name="mapboxRed">#f74e4e</color>
+    <color name="mapboxGreen">#33c377</color>
+    <color name="mapbox_white">#ffffff</color>
 </resources>

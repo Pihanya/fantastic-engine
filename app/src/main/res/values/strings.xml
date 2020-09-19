@@ -5,4 +5,5 @@
     <string name="time_now">Сейчас</string>
     <string name="mood">Настроение</string>
     <string name="topic">Теметика</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiaWdvcmFub2toaW4iLCJhIjoiY2tmOG5kbGIxMDdjdjJyb2ZzZzVlcnZidiJ9.osaLi8S9pXWKkplOWLj_wA</string>
 </resources>

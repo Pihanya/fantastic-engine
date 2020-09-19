@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity">
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/buttonFloatTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
+        />
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/buttonFloatRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
+        />
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/buttonFloatLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:orientation="vertical">
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/buttonFloatBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onFilterButtonClick"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
+            />
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/btn_date"
+                android:text="Tarih" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/btn_converter"
+                android:layout_height="35dp"
+                android:text="Hesap" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
