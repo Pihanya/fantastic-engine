@@ -49,10 +49,11 @@ class MapActivity : AppCompatActivity() {
         var n = 0
     }
 
-    private val EMOJIS_IMAGES = listOf(
-        EMOJI_HAPPY, R.drawable.ic_news_outline,
-        EMOJI_SAD
-        , R.drawable.ic_news_outline
+    private val EMOJIS_IMAGES = mapOf<String, Int>(
+        EMOJI_HAPPY to R.drawable.ic_news_outline,
+        EMOJI_SAD to R.drawable.ic_clips_outline,
+        EMOJI_EXITED to R.drawable.ic_clips_outline,
+        EMOJI_SLEEPY to R.drawable.ic_clips_outline
     )
 
     fun onFilterButtonClick(view: View) {
@@ -160,14 +161,14 @@ class MapActivity : AppCompatActivity() {
                 ).also { mapboxMap.animateCamera(it) }
 
                 addClusteredGeoJsonSource(style)
-                listOf(
-                    ""
-                )
-                style.addImage(
-                    "cross-icon-id",
-                    BitmapUtils.getBitmapFromDrawable(resources.getDrawable(R.drawable.ic_close_blue))!!,
-                    true
-                )
+
+                EMOJIS_IMAGES.entries.forEach { (icon, iconId) ->
+                    style.addImage(
+                        icon,
+                        BitmapUtils.getBitmapFromDrawable(resources.getDrawable(iconId))!!,
+                        true
+                    )
+                }
             }
         }
     }
@@ -228,7 +229,7 @@ class MapActivity : AppCompatActivity() {
 
         //Creating a marker layer for single data points
         val unclustered = SymbolLayer("unclustered-points", "earthquakes")
-        unclustered.setProperties(iconImage("cross-icon-id"), iconSize(4f))
+        unclustered.setProperties(iconImage(get("icon"),), iconSize(4f))
 //        unclustered.setFilter(has("id"));
         loadedMapStyle.addLayer(unclustered)
 
@@ -246,8 +247,17 @@ class MapActivity : AppCompatActivity() {
             val circles = CircleLayer("cluster-$moodType", "earthquakes")
             val pointCount = toNumber(get("point_count"))
 
+            val iconImage = when(moodType) {
+                MoodType.HIGH_ENERGY -> EMOJI_EXITED
+                MoodType.LOW_ENERGY -> EMOJI_SLEEPY
+                MoodType.NEGATIVE -> EMOJI_SAD
+                MoodType.POSITIVE -> EMOJI_HAPPY
+            }
+
             circles.setProperties(
                 circleColor(layers[i][1] as Int),
+                iconImage(iconImage),
+                circleColor(R.color.white),
                 circleRadius(
                     interpolate(
                         exponential(1),
@@ -261,16 +271,7 @@ class MapActivity : AppCompatActivity() {
                     )
                 )
             )
-            // Add a filter to the cluster layer that hides the circles based on "point_count"
-            /*circles.setFilter(
-                if (i == 0) all(
-                    has("point_count"),
-                    gte(toNumber(get("it")), toNumber(get("winter")))
-                ) else all(
-                    has("point_count"),
-                    gte(toNumber(get("winter")), 2)
-                )
-            )*/
+
             circles.setFilter(all(has("mood"), eq(get("mood"), literal(moodType.name))))
             loadedMapStyle.addLayer(circles)
         }
