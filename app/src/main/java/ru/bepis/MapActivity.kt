@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.gson.JsonObject
@@ -72,6 +74,9 @@ class MapActivity : AppCompatActivity() {
 
 
     fun onViewMoodClicked(view: View) {
+        val ll = view as LinearLayout
+        val themeView = ll.getChildAt(1) as TextView
+        Store.mood = themeView.text.toString()
         val intent = Intent(this, MoodFeeds::class.java)
         startActivity(intent)
     }
